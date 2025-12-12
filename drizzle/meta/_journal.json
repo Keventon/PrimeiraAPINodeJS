@@ -15,6 +15,27 @@
       "when": 1764804202736,
       "tag": "0001_nappy_molten_man",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1765500568103,
+      "tag": "0002_broken_polaris",
+      "breakpoints": true
+    },
+    {
+      "idx": 3,
+      "version": "7",
+      "when": 1765500840778,
+      "tag": "0003_wandering_nova",
+      "breakpoints": true
+    },
+    {
+      "idx": 4,
+      "version": "7",
+      "when": 1765503478177,
+      "tag": "0004_eager_felicia_hardy",
+      "breakpoints": true
     }
   ]
 }
