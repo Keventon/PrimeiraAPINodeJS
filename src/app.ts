@@ -8,16 +8,12 @@ import {
   jsonSchemaTransform,
 } from "fastify-type-provider-zod";
 // import fastifySwaggerUi from "@fastify/swagger-ui";
-import { createCourseRoute } from "./src/routes/create-course.ts";
-import { getCoursesRoute } from "./src/routes/get-courses.ts";
-import { getCourseByIdRoute } from "./src/routes/get-course-by-id.ts";
-
-type Params = {
-  id: string;
-};
+import { createCourseRoute } from "../src/routes/create-course.ts";
+import { getCoursesRoute } from "../src/routes/get-courses.ts";
+import { getCourseByIdRoute } from "../src/routes/get-course-by-id.ts";
 
 const server = fastify({
-  logger: true,
+  logger: false,
 }).withTypeProvider<ZodTypeProvider>();
 
 if (process.env.NODE_ENV === "development") {
@@ -50,6 +46,4 @@ server.register(getCourseByIdRoute);
 server.setValidatorCompiler(validatorCompiler);
 server.setSerializerCompiler(serializerCompiler);
 
-server.listen({ port: 3333 }).then(() => {
-  console.log("HTTP server running!");
-});
+export { server };

@@ -1,4 +1,5 @@
 import { text } from "drizzle-orm/pg-core";
+import { uniqueIndex } from "drizzle-orm/pg-core";
 import { timestamp } from "drizzle-orm/pg-core";
 import { uuid } from "drizzle-orm/pg-core";
 import { pgTable } from "drizzle-orm/pg-core";
@@ -15,9 +16,13 @@ export const courses = pgTable("courses", {
   description: text(),
 });
 
-export const enrollments = pgTable("enrollments", {
-  id: uuid().primaryKey().defaultRandom(),
-  userId: uuid().references(() => users.id),
-  courseId: uuid().references(() => courses.id),
-  createdAt: timestamp({ withTimezone: true }).notNull().defaultNow(),
-});
+export const enrollments = pgTable(
+  "enrollments",
+  {
+    id: uuid().primaryKey().defaultRandom(),
+    userId: uuid().references(() => users.id),
+    courseId: uuid().references(() => courses.id),
+    createdAt: timestamp({ withTimezone: true }).notNull().defaultNow(),
+  },
+  (table) => [uniqueIndex().on(table.userId, table.courseId)]
+);

@@ -36,6 +36,13 @@
       "when": 1765503478177,
       "tag": "0004_eager_felicia_hardy",
       "breakpoints": true
+    },
+    {
+      "idx": 5,
+      "version": "7",
+      "when": 1765834424630,
+      "tag": "0005_white_silverclaw",
+      "breakpoints": true
     }
   ]
 }
