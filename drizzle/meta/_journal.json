@@ -43,6 +43,13 @@
       "when": 1765834424630,
       "tag": "0005_white_silverclaw",
       "breakpoints": true
+    },
+    {
+      "idx": 6,
+      "version": "7",
+      "when": 1766091691621,
+      "tag": "0006_large_scorpion",
+      "breakpoints": true
     }
   ]
 }

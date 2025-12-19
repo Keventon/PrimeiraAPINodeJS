@@ -14,3 +14,12 @@ Content-Type: application/json
 {
     "title": "Curso de Java"
 }
+
+###
+POST http://localhost:3333/sessions
+Content-Type: application/json
+
+{
+    "email": "Valentina_Braga59@hotmail.com",
+    "password": "123456"
+}

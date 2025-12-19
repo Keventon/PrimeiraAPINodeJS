@@ -11,6 +11,7 @@ import {
 import { createCourseRoute } from "../src/routes/create-course.ts";
 import { getCoursesRoute } from "../src/routes/get-courses.ts";
 import { getCourseByIdRoute } from "../src/routes/get-course-by-id.ts";
+import { loginRoute } from "./routes/login.ts";
 
 const server = fastify({
   logger: false,
@@ -42,6 +43,7 @@ if (process.env.NODE_ENV === "development") {
 server.register(createCourseRoute);
 server.register(getCoursesRoute);
 server.register(getCourseByIdRoute);
+server.register(loginRoute);
 
 server.setValidatorCompiler(validatorCompiler);
 server.setSerializerCompiler(serializerCompiler);

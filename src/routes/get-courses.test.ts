@@ -3,6 +3,7 @@ import request from "supertest";
 import { server } from "../app.ts";
 import { makeCourse } from "../tests/factories/make-course.ts";
 import { randomUUID } from "node:crypto";
+import { makeAuthenticateUser } from "../tests/factories/make-user.ts";
 
 test("Get courses", async () => {
   await server.ready();
@@ -10,13 +11,15 @@ test("Get courses", async () => {
   const titleId = randomUUID();
 
   const course = await makeCourse(titleId);
+  const { token } = await makeAuthenticateUser("manager");
 
-  const response = await request(server.server).get(
-    `/courses?search=${titleId}`
-  );
+  const response = await request(server.server)
+    .get(`/courses?search=${titleId}`)
+    .set("Authorization", token);
 
   expect(response.status).toEqual(200);
   expect(response.body).toEqual({
+    total: 1,
     courses: [
       {
         id: expect.any(String),
@@ -24,6 +27,5 @@ test("Get courses", async () => {
         enrollments: 0,
       },
     ],
-    total: 1,
   });
 });
